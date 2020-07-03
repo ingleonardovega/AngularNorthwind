@@ -1,0 +1,31 @@
+<div>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Product Code</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">List Price</th>
+                <th scope="col">Standar Cost</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item.ProductCode}}</td>
+                <td>{{item.ProductName}}</td>
+                <td>{{item.Description}}</td>
+                <td>{{item.ListPrice}}</td>
+                <td>{{item.StandardCost}}</td>
+                <td>
+                    <button mat-icon-button (click)="onEdit(item.id)">
+                        <mat-icon>edit</mat-icon>   
+                    </button>
+                    <button mat-icon-button (click)="onDelete(item.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

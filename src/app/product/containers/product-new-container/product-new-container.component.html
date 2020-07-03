@@ -1,0 +1,64 @@
+<div class="new-product-container">
+    <div>
+        <span class="modal-title">Nuevo Producto</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        <form [formGroup]="productForm" (ngSubmit)="onAdd()">
+            <div class="controls">
+                <div class="product-code-container">
+                    <mat-form-field class="product-code">
+                        <input matInput placeholder="Product Code" formControlName="ProductCode">
+                        <mat-error *ngIf="productForm.get('ProductCode').hasError('required')">Ingrese Codigo.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="product-name-container">
+                    <mat-form-field class="product-name">
+                        <input matInput placeholder="Product Name" formControlName="ProductName">
+                        <mat-error *ngIf="productForm.get('ProductName').hasError('required')">Ingrese Nombre.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="description-container">
+                    <mat-form-field class="description">
+                        <input matInput placeholder="Description" formControlName="Description">
+                        <mat-error *ngIf="productForm.get('Description').hasError('required')">Ingrese Descripcion.
+                        </mat-error>
+                    </mat-form-field>
+                </div>  
+            </div>
+            <div class="controls">
+                <div class="standard-cost-container">
+                    <mat-form-field class="standard-cost">
+                        <input appDecimalOnly matInput placeholder="Standard Cost" formControlName="StandardCost">
+                        <mat-error *ngIf="productForm.get('StandardCost').hasError('required')">Ingrese Standard Cost.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="list-price-container">
+                    <mat-form-field class="list-price">
+                        <input appDecimalOnly matInput placeholder="List Price" formControlName="ListPrice">
+                        <mat-error *ngIf="productForm.get('ListPrice').hasError('required')">Ingrese List Price.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="category-container">
+                    <mat-form-field class="category">
+                        <mat-label>Select an option</mat-label>
+                        <mat-select formControlName="Category">
+                            <mat-option *ngFor="let category of categories" [value]="category.key">{{category.value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="button-container">
+                <button mat-raised-button color="warn">Cancelar</button>
+                <button mat-raised-button type="submit" color="primary" [disabled]="!productForm.valid">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
