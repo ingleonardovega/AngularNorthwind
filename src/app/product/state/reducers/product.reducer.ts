@@ -1,16 +1,19 @@
 import { Product } from '../../models/product';
 import * as ProductActions from '../actions/product.actions';
+import { ProductBestSeller } from '../../models/best-seller';
 
 export interface State{
     products : Product[];
     totalRecords: number;
-    product :Product
+    product :Product;
+    bestSellers: ProductBestSeller[];
 }
 
 const initialState: State = {
     products: [],
     totalRecords: 0,
-    product : new Product()
+    product : new Product(),
+    bestSellers:[]
     
 };
 
@@ -49,6 +52,15 @@ export function ProductReducer(state = initialState,action:ProductActions.Action
         case ProductActions.ProductActionType.AddProductComplete:{
             return state;
         }
+        case ProductActions.ProductActionType.GetBestSellers:{
+            return state;
+        }
+        case ProductActions.ProductActionType.GetBestSellersComplete:{
+            return{
+                ...state,
+                bestSellers :action.payload
+            };
+        }
         default:
                 return state;
     }
@@ -57,3 +69,4 @@ export function ProductReducer(state = initialState,action:ProductActions.Action
 export const getProducts = (state:State)=>state.products;
 export const getTotalRecors = (state:State)=>state.totalRecords;
 export const getProduct = (state:State)=>state.product;
+export const getProductBestSellers = (state:State)=>state.bestSellers;

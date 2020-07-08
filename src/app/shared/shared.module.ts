@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppConfirmComponent } from './components/app-confirm/app-confirm.component';
 import { AppConfirmService } from './components/app-confirm/app-confirm.service';
 import { DecimalOnlyDirective } from './directives/decimal-only.directive';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 
@@ -17,10 +18,11 @@ import { DecimalOnlyDirective } from './directives/decimal-only.directive';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    HighchartsChartModule
   ],
   exports:[NavBarComponent, MaterialModule, 
-    FormsModule, ReactiveFormsModule, AppConfirmComponent, DecimalOnlyDirective],
+    FormsModule, ReactiveFormsModule, AppConfirmComponent, DecimalOnlyDirective, HighchartsChartModule],
   entryComponents: [AppConfirmComponent],
   providers: [AppConfirmService]
 })

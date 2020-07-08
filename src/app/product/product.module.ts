@@ -14,10 +14,12 @@ import { ProductCardListComponent } from './components/product-card-list/product
 import { ProductEditContainerComponent } from './containers/product-edit-container/product-edit-container.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductNewContainerComponent } from './containers/product-new-container/product-new-container.component';
+import { BestSellerProductContainerComponent } from './containers/best-seller-product-container/best-seller-product-container.component';
+import { BestSellerProductChartComponent } from './components/best-seller-product-chart/best-seller-product-chart.component';
 
 
 @NgModule({
-  declarations: [ProductMainContainerComponent, ProductListContainerComponent, ProductTableListComponent, ProductCardListComponent, ProductEditContainerComponent, ProductEditComponent, ProductNewContainerComponent],
+  declarations: [ProductMainContainerComponent, ProductListContainerComponent, ProductTableListComponent, ProductCardListComponent, ProductEditContainerComponent, ProductEditComponent, ProductNewContainerComponent, BestSellerProductContainerComponent, BestSellerProductChartComponent],
   imports: [
     CommonModule,
     ProductRoutingModule,

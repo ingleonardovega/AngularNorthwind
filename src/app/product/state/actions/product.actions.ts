@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { GetProduct } from '../../models/get-product';
 import { ProductList } from '../../models/product-list';
 import { Product } from '../../models/product';
+import { ProductBestSeller } from '../../models/best-seller';
 
 
 export enum ProductActionType {
@@ -14,7 +15,9 @@ export enum ProductActionType {
     DeleteProduct = '[Product] Delete Product',
     DeleteProductComplete = '[Product] Delete Product Complete',
     AddProduct = '[Product] Add Product',
-    AddProductComplete = '[Product] Add Product Complete'
+    AddProductComplete = '[Product] Add Product Complete',
+    GetBestSellers = '[Product] Get Best Sellers',
+    GetBestSellersComplete = '[Product] Get Best Sellers Complete'
 }
 
 export class LoadProducts implements Action {
@@ -65,9 +68,18 @@ export class AddProductComplete implements Action {
     constructor() { }
 }
 
+export class GetBestSellers implements Action {
+    readonly type = ProductActionType.GetBestSellers;
+    constructor() { }
+}
+export class GetBestSellersComplete implements Action {
+    readonly type = ProductActionType.GetBestSellersComplete;
+    constructor(public payload: ProductBestSeller[]) { }
+}
+
 
 export type Actions = LoadProducts | LoadProductsComplete | 
     GetProductById | GetProductByIdComplete | 
     UpdateProduct | UpdateProductComplete | 
     DeleteProduct | DeleteProductComplete | 
-    AddProduct | AddProductComplete;
+    AddProduct | AddProductComplete | GetBestSellers | GetBestSellersComplete;

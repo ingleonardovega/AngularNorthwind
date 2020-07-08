@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ProductEffects {
     constructor(private productService: ProductService,
-        private actios$: Actions,
+        private actions$: Actions,
         private router:Router) { }
     @Effect()
-    getProducts$ = this.actios$.pipe(
+    getProducts$ = this.actions$.pipe(
         ofType<productActions.LoadProducts>(productActions.ProductActionType.LoadProducts),
         switchMap(action => this.productService.getProducts(action.request)
             .pipe(
@@ -18,7 +18,7 @@ export class ProductEffects {
             ))
     );
     @Effect()
-    getProductById$ = this.actios$.pipe(
+    getProductById$ = this.actions$.pipe(
         ofType<productActions.GetProductById>(productActions.ProductActionType.GetProductById),
         switchMap(action=>this.productService.getProductById(action.ProductId)
                             .pipe(
@@ -26,7 +26,7 @@ export class ProductEffects {
                             ))    
     );
     @Effect()
-    updateProduct$ = this.actios$.pipe(
+    updateProduct$ = this.actions$.pipe(
         ofType<productActions.UpdateProduct>(productActions.ProductActionType.UpdateProduct),
         switchMap(action=>this.productService.updateProduct(action.request)
         .pipe(
@@ -37,7 +37,7 @@ export class ProductEffects {
         )))
     );
     @Effect()
-    deleteProduct$ = this.actios$.pipe(
+    deleteProduct$ = this.actions$.pipe(
         ofType<productActions.DeleteProduct>(productActions.ProductActionType.DeleteProduct),
         switchMap(action=>this.productService.deleteProduct(action.ProjectId)
         .pipe(
@@ -47,7 +47,7 @@ export class ProductEffects {
         )))
     );
     @Effect()
-    addProduct$ = this.actios$.pipe(
+    addProduct$ = this.actions$.pipe(
         ofType<productActions.AddProduct>(productActions.ProductActionType.AddProduct),
         switchMap(action=>this.productService.addProduct(action.request)
         .pipe(
@@ -56,5 +56,13 @@ export class ProductEffects {
               return new productActions.AddProductComplete()  
             }
         )))
-    )
+    );
+    @Effect()
+    getBestSellers$ = this.actions$.pipe(
+        ofType<productActions.GetBestSellers>(productActions.ProductActionType.GetBestSellers),
+        switchMap(action => this.productService.getBestSellers()
+            .pipe(
+                map(data => new productActions.GetBestSellersComplete(data))
+            ))
+    );
 }
